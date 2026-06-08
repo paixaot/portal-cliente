@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap");
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:"Montserrat",sans-serif;background:transparent;}
+
+/* TABS PRINCIPAIS */
+.main-tabs{display:flex;border-bottom:2px solid #ede8e0;margin-bottom:20px;gap:0;overflow-x:auto;}
+.main-tab{padding:12px 22px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:600;color:#7a7268;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;font-family:"Montserrat",sans-serif;}
+.main-tab:hover{color:#18140f;}
+.main-tab.on{color:#b8935a;border-bottom-color:#b8935a;}
+
+/* SUMMARY */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#c4bdb4;border-radius:12px;overflow:hidden;margin-bottom:20px;}
+.sum-item{background:#faf7f3;padding:14px 18px;}
+.sum-lbl{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#7a7268;margin-bottom:5px;font-weight:500;}
+.sum-val{font-size:18px;font-weight:200;color:#18140f;letter-spacing:-.3px;}
+.sum-val.ok{color:#5a8860;}
+
+/* DICA BOX */
+.dica-box{background:#1e1a14;border-radius:12px;padding:16px 20px;margin-bottom:20px;border-left:3px solid #b8935a;}
+.dica-title{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#b8935a;margin-bottom:12px;}
+.dica-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.dica-item{background:rgba(184,147,90,.08);border:1px solid rgba(184,147,90,.2);border-radius:8px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+.dica-name{font-size:11px;font-weight:500;color:#faf7f3;}
+.dica-price{font-size:13px;font-weight:300;color:#d4ae80;white-space:nowrap;}
+.dica-link{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:600;color:#b8935a;text-decoration:none;padding:4px 10px;border:1px solid rgba(184,147,90,.4);border-radius:20px;transition:all .2s;white-space:nowrap;}
+.dica-link:hover{background:#b8935a;color:#120f0b;}
+.dica-link svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* AMBIENTE BLOCK */
+.amb-block{margin-bottom:20px;}
+.amb-header{display:flex;align-items:center;gap:12px;padding:13px 18px;background:#120f0b;border-radius:12px 12px 0 0;}
+.amb-tag{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#120f0b;padding:4px 12px;border-radius:20px;}
+.tag-kids{background:#b8935a;}
+.tag-recepcao{background:#8aacb8;}
+.tag-sala1{background:#a0b88a;}
+.tag-sala2{background:#b8a08a;}
+.tag-sala3{background:#a88ab8;}
+.tag-cozinha{background:#b8b08a;}
+.tag-banheiro{background:#8ab8b0;}
+.tag-geral{background:#c4bdb4;}
+.amb-name{font-size:13px;font-weight:500;color:#faf7f3;letter-spacing:.03em;}
+.amb-count{font-size:10px;font-weight:300;color:#7a7268;margin-left:auto;white-space:nowrap;}
+
+.tw{overflow:hidden;border:1px solid #ede8e0;border-top:none;border-radius:0 0 12px 12px;}
+table{width:100%;border-collapse:collapse;background:#faf7f3;font-size:12px;}
+thead tr{background:#1e1a14;}
+thead th{padding:10px 14px;text-align:left;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#b8935a;font-weight:500;}
+thead th.tc{text-align:center;}
+
+tbody tr{border-bottom:1px solid #ede8e0;transition:background .2s;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr.bought td{opacity:.5;text-decoration:line-through;text-decoration-color:#c4bdb4;}
+tbody tr.bought{background:#f5faf5;}
+tbody td{padding:11px 14px;font-weight:300;color:#18140f;vertical-align:middle;}
+tbody td:first-child{font-weight:500;font-size:12px;}
+
+/* BADGE COMPRA */
+.badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:8px;letter-spacing:.12em;font-weight:600;text-transform:uppercase;white-space:nowrap;}
+.b-online{background:rgba(90,136,150,.12);color:#2e728a;}
+.b-loja{background:rgba(184,147,90,.12);color:#9a6e2e;}
+.b-pesquisar{background:rgba(150,90,90,.12);color:#8a3a3a;}
+
+/* FORNECEDOR */
+.forn{font-size:10px;font-weight:300;color:#7a7268;}
+
+/* VALOR */
+.val{font-size:12px;font-weight:500;color:#18140f;white-space:nowrap;}
+.pesq{font-size:10px;font-weight:400;color:#b8935a;font-style:italic;}
+
+/* LINK */
+.item-link{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:600;color:#b8935a;text-decoration:none;padding:4px 10px;border:1px solid rgba(184,147,90,.35);border-radius:20px;transition:all .2s;white-space:nowrap;}
+.item-link:hover{background:#b8935a;color:#faf7f3;}
+.item-link svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.no-link{font-size:10px;color:#c4bdb4;font-weight:300;}
+
+/* CHECKLIST */
+.check-cell{text-align:center;}
+.check-wrap{display:inline-flex;flex-direction:column;align-items:center;gap:4px;}
+.chk{width:28px;height:28px;border-radius:50%;border:1.5px solid #c4bdb4;background:#faf7f3;cursor:pointer;transition:all .22s;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.chk:hover{border-color:#b8935a;transform:scale(1.1);}
+.chk.on{background:#5a8860;border-color:#5a8860;}
+.chk svg{width:13px;height:13px;stroke:#faf7f3;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .18s;}
+.chk.on svg{opacity:1;}
+.slbl{font-size:8px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#c4bdb4;transition:color .2s;}
+.slbl.on{color:#5a8860;}
+
+/* TOTAL LINHA */
+.tot-row{background:#f2f0ec!important;}
+.tot-row td{padding:13px 14px!important;font-weight:700!important;font-size:12px;border-top:2px solid #d4c8b8!important;}
+.tot-sub{font-size:10px;font-weight:400;color:#5a8860;margin-top:2px;}
+
+/* ILUMINAÇÃO */
+.ilum-note{background:#faf7f3;border:1px solid #ede8e0;border-radius:12px;padding:40px;text-align:center;}
+.ilum-icon{font-size:32px;margin-bottom:12px;}
+.ilum-txt{font-size:13px;font-weight:300;color:#7a7268;}
+
+/* NOTA */
+.nota{margin-top:10px;padding:11px 16px;background:#faf7f3;border:1px solid #ede8e0;border-left:3px solid #b8935a;border-radius:0 10px 10px 0;font-size:11px;font-weight:300;color:#7a7268;line-height:1.6;}
+
+@media(max-width:700px){
+  .summary{grid-template-columns:1fr 1fr;}
+  .dica-grid{grid-template-columns:1fr;}
+  thead th:nth-child(5),tbody td:nth-child(5){display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ABAS PRINCIPAIS -->
+<div class="main-tabs">
+  <button class="main-tab on" onclick="showTab('compras')">Compras</button>
+  <button class="main-tab" onclick="showTab('iluminacao')">Iluminação</button>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--  ABA COMPRAS                                               -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div id="tab-compras">
+
+  <!-- RESUMO -->
+  <div class="summary">
+    <div class="sum-item"><div class="sum-lbl">Total de itens</div><div class="sum-val" id="s-total">33 itens</div></div>
+    <div class="sum-item"><div class="sum-lbl">Valor estimado</div><div class="sum-val" id="s-valor">—</div></div>
+    <div class="sum-item"><div class="sum-lbl">Já comprado</div><div class="sum-val ok" id="s-comprado">R$ 0,00</div></div>
+    <div class="sum-item"><div class="sum-lbl">Comprados</div><div class="sum-val ok" id="s-n">0 itens</div></div>
+  </div>
+
+  <!-- DICAS DE OURO -->
+  <div class="dica-box">
+    <div class="dica-title">⭐ Dicas de Ouro — Opções de Monitor</div>
+    <div class="dica-grid">
+      <div class="dica-item">
+        <div>
+          <div class="dica-name">Monitor Portátil 15,6"</div>
+          <div class="dica-price">R$ 364,00 / un</div>
+        </div>
+        <a class="dica-link" href="https://meli.la/2HJcZRe" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver
+        </a>
+      </div>
+      <div class="dica-item">
+        <div>
+          <div class="dica-name">Monitor Portátil 17,3"</div>
+          <div class="dica-price">R$ 770,00 / un</div>
+        </div>
+        <a class="dica-link" href="https://meli.la/22tP317" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Ver
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- helper link icon -->
+  <template id="ico-link">
+    <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+  </template>
+
+  <!-- ── ÁREA KIDS ─────────────────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-kids">Área Kids</span>
+      <span class="amb-name">Brinquedoteca</span>
+      <span class="amb-count">6 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr>
+          <th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th>
+          <th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th>
+        </tr></thead>
+        <tbody>
+          <tr id="r0"><td>Trio de Peixe</td><td>1 un</td><td class="val">R$ 39,00</td><td class="val">R$ 39,00</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/2oVSHeU" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c0" onclick="tog(0,39)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l0">Pendente</span></div></td></tr>
+
+          <tr id="r1"><td>Prateleira Infantil</td><td>2 un</td><td class="val">R$ 19,96</td><td class="val">R$ 39,92</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/2JQfnMx" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c1" onclick="tog(1,39.92)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l1">Pendente</span></div></td></tr>
+
+          <tr id="r2"><td>Painel Montessori</td><td>2 un</td><td class="val">R$ 80,10</td><td class="val">R$ 160,20</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/1CHMKd6" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c2" onclick="tog(2,160.20)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l2">Pendente</span></div></td></tr>
+
+          <tr id="r3"><td>12 Tapetes Emborrachados 50×50 — Preto</td><td>12 un</td><td class="pesq">Solicitar orçamento</td><td class="pesq">—</td><td class="forn">Loja Comercial Santa Bárbara</td><td><span class="badge b-loja">Loja</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c3" onclick="tog(3,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l3">Pendente</span></div></td></tr>
+
+          <tr id="r4"><td>4 Tapetes Emborrachados 50×50 — Cores do Autismo</td><td>4 un</td><td class="pesq">Solicitar orçamento</td><td class="pesq">—</td><td class="forn">Loja Comercial Santa Bárbara</td><td><span class="badge b-loja">Loja</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c4" onclick="tog(4,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l4">Pendente</span></div></td></tr>
+
+          <tr id="r5"><td>Mesa Infantil</td><td>1 un</td><td class="val">R$ 268,00</td><td class="val">R$ 268,00</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/2sHMkKK" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c5" onclick="tog(5,268)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l5">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Área Kids</strong></td><td colspan="5"><strong>R$ 507,12</strong> + orçamentos loja</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── RECEPÇÃO ───────────────────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-recepcao">Recepção</span>
+      <span class="amb-name">Área de Espera</span>
+      <span class="amb-count">11 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th><th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="r6"><td>Kit 2 Poltronas</td><td>1 kit</td><td class="val">R$ 663,62</td><td class="val">R$ 663,62</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/3qKWypR17q" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c6" onclick="tog(6,663.62)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l6">Pendente</span></div></td></tr>
+
+          <tr id="r7"><td>Mesa Redonda 70cm</td><td>1 un</td><td class="val">R$ 230,52</td><td class="val">R$ 230,52</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/4VaDmPtKJ2" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c7" onclick="tog(7,230.52)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l7">Pendente</span></div></td></tr>
+
+          <tr id="r8"><td>Sino para Parede</td><td>1 un</td><td class="val">R$ 347,00</td><td class="val">R$ 347,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/7Aayxf15gA" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c8" onclick="tog(8,347)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l8">Pendente</span></div></td></tr>
+
+          <tr id="r9"><td>Monitor Senha</td><td>1 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c9" onclick="tog(9,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l9">Pendente</span></div></td></tr>
+
+          <tr id="r10"><td>TV</td><td>1 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c10" onclick="tog(10,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l10">Pendente</span></div></td></tr>
+
+          <tr id="r11"><td>Cadeiras de Escritório</td><td>2 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c11" onclick="tog(11,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l11">Pendente</span></div></td></tr>
+
+          <tr id="r12"><td>Cadeiras Longarina 3 Assentos</td><td>4 un</td><td class="val">R$ 903,47</td><td class="val">R$ 3.613,88</td><td class="forn">Pollo Móveis</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://pollomoveisbrasilia.com.br/sofanete-para-escritorio-estofada-com-03-lugares-trix-pes-preto-35121/" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c12" onclick="tog(12,3613.88)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l12">Pendente</span></div></td></tr>
+
+          <tr id="r13"><td>4 Quadros com Vidro + Arte</td><td>4 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c13" onclick="tog(13,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l13">Pendente</span></div></td></tr>
+
+          <tr id="r14"><td>6 Artes em 3D com Moldura</td><td>6 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c14" onclick="tog(14,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l14">Pendente</span></div></td></tr>
+
+          <tr id="r15"><td>Padrão de Placa p/ cada Ambiente</td><td>—</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c15" onclick="tog(15,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l15">Pendente</span></div></td></tr>
+
+          <tr id="r16"><td>3 Logo em PVC Expandido</td><td>3 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c16" onclick="tog(16,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l16">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Recepção</strong></td><td colspan="5"><strong>R$ 4.855,02</strong> + pesquisar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── SALA 01 - FULGÊNCIO ────────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-sala1">Sala 01</span>
+      <span class="amb-name">Sala Fulgêncio</span>
+      <span class="amb-count">4 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th><th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="r17"><td>Arte Trabalhador Rural</td><td>1 un</td><td class="val">R$ 90,00</td><td class="val">R$ 90,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/7fXFZ4DKSy" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c17" onclick="tog(17,90)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l17">Pendente</span></div></td></tr>
+
+          <tr id="r18"><td>Cadeiras Jantar</td><td>2 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c18" onclick="tog(18,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l18">Pendente</span></div></td></tr>
+
+          <tr id="r19"><td>Cadeiras de Escritório</td><td>2 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c19" onclick="tog(19,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l19">Pendente</span></div></td></tr>
+
+          <tr id="r20"><td>Moldura com Vidro 90×60 — Madeira Clara</td><td>1 un</td><td class="val">R$ 259,13</td><td class="val">R$ 259,13</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/1HJtsLD" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c20" onclick="tog(20,259.13)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l20">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Sala 01</strong></td><td colspan="5"><strong>R$ 349,13</strong> + pesquisar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── SALA 02 - ASSENTAMENTOS ────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-sala2">Sala 02</span>
+      <span class="amb-name">Sala Assentamentos</span>
+      <span class="amb-count">5 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th><th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="r21"><td>Cadeira de Escritório</td><td>1 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c21" onclick="tog(21,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l21">Pendente</span></div></td></tr>
+
+          <tr id="r22"><td>Cadeiras de Jantar</td><td>2 un</td><td class="val">R$ 678,95</td><td class="val">R$ 1.357,90</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/2s2bCrY" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c22" onclick="tog(22,1357.90)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l22">Pendente</span></div></td></tr>
+
+          <tr id="r23"><td>Conjunto 2 Poltronas</td><td>1 kit</td><td class="val">R$ 840,00</td><td class="val">R$ 840,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/902dAQfrkn" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c23" onclick="tog(23,840)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l23">Pendente</span></div></td></tr>
+
+          <tr id="r24"><td>Moldura com Vidro 90×70 — Preto</td><td>2 un</td><td class="val">R$ 361,10</td><td class="val">R$ 722,20</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/1g7MmQq" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c24" onclick="tog(24,722.20)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l24">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Sala 02</strong></td><td colspan="5"><strong>R$ 2.920,10</strong> + pesquisar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── SALA 03 - CERQUEIRO ───────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-sala3">Sala 03</span>
+      <span class="amb-name">Sala Cerqueiro</span>
+      <span class="amb-count">6 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th><th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="r25"><td>Vaso de Planta — Marrom</td><td>1 un</td><td class="val">R$ 129,00</td><td class="val">R$ 129,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/5L9Kq6R8An" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c25" onclick="tog(25,129)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l25">Pendente</span></div></td></tr>
+
+          <tr id="r26"><td>Decoração Palha 11 Peças</td><td>1 un</td><td class="val">R$ 225,00</td><td class="val">R$ 225,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/6feiQt0Vgo" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c26" onclick="tog(26,225)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l26">Pendente</span></div></td></tr>
+
+          <tr id="r27"><td>Prato Decorativo</td><td>1 un</td><td class="val">R$ 90,00</td><td class="val">R$ 90,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/7pqfp7ocwA" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c27" onclick="tog(27,90)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l27">Pendente</span></div></td></tr>
+
+          <tr id="r28"><td>Prato Decorativo</td><td>1 un</td><td class="val">R$ 60,00</td><td class="val">R$ 60,00</td><td class="forn">Shopee</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://s.shopee.com.br/9UytoHp0AD" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c28" onclick="tog(28,60)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l28">Pendente</span></div></td></tr>
+
+          <tr id="r29"><td>Cadeira de Escritório</td><td>1 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c29" onclick="tog(29,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l29">Pendente</span></div></td></tr>
+
+          <tr id="r30"><td>Cadeiras Jantar</td><td>2 un</td><td class="pesq">Pesquisar preço</td><td class="pesq">—</td><td class="forn">—</td><td><span class="badge b-pesquisar">Pesquisar</span></td><td><span class="no-link">—</span></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c30" onclick="tog(30,0)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l30">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Sala 03</strong></td><td colspan="5"><strong>R$ 504,00</strong> + pesquisar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── COZINHA ───────────────────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-cozinha">Cozinha</span>
+      <span class="amb-name">Cozinha / Copa</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th><th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="r31"><td>Quadro Lousa Cortiça</td><td>1 un</td><td class="val">R$ 70,00</td><td class="val">R$ 70,00</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/2Wo9fpU" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c31" onclick="tog(31,70)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l31">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Cozinha</strong></td><td colspan="5"><strong>R$ 70,00</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── BANHEIROS ─────────────────────────────────────────── -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-banheiro">Banheiros</span>
+      <span class="amb-name">Banheiros</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Item</th><th>Qtd</th><th>Valor unit.</th><th>Total</th><th>Fornecedor</th><th>Compra</th><th>Link</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="r32"><td>Torneiras Vintage Preta</td><td>2 un</td><td class="val">R$ 390,00</td><td class="val">R$ 780,00</td><td class="forn">Mercado Livre</td><td><span class="badge b-online">Online</span></td><td><a class="item-link" href="https://meli.la/2YEYXeN" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td><td class="check-cell"><div class="check-wrap"><button class="chk" id="c32" onclick="tog(32,780)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="l32">Pendente</span></div></td></tr>
+
+          <tr class="tot-row"><td colspan="3"><strong>Subtotal — Banheiros</strong></td><td colspan="5"><strong>R$ 780,00</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="nota">&#9432;&nbsp; Clique no <strong>círculo</strong> para marcar como comprado &middot; <span style="background:rgba(90,136,150,.12);color:#2e728a;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600;">Online</span> = compra pelo link &middot; <span style="background:rgba(184,147,90,.12);color:#9a6e2e;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600;">Loja</span> = solicitar orçamento presencial &middot; <span style="background:rgba(150,90,90,.12);color:#8a3a3a;padding:2px 8px;border-radius:10px;font-size:9px;font-weight:600;">Pesquisar</span> = ainda sem preço definido</div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<!--  ABA ILUMINAÇÃO                                            -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div id="tab-iluminacao" style="display:none">
+  <div class="ilum-note">
+    <div class="ilum-icon">💡</div>
+    <div class="ilum-txt">Os itens de iluminação serão adicionados em breve.<br>Entre em contato com a arquiteta para mais informações.</div>
+  </div>
+</div>
+
+<script>
+var st={};
+var vl={};
+for(var i=0;i<33;i++){st[i]=false;vl[i]=0;}
+vl[0]=39;vl[1]=39.92;vl[2]=160.20;vl[5]=268;vl[6]=663.62;vl[7]=230.52;vl[8]=347;
+vl[12]=3613.88;vl[17]=90;vl[20]=259.13;vl[22]=1357.90;vl[23]=840;vl[24]=722.20;
+vl[25]=129;vl[26]=225;vl[27]=90;vl[28]=60;vl[31]=70;vl[32]=780;
+
+var KEY='smv_compras_v1';
+
+/* salva em localStorage E cookie (fallback para iframe) */
+function salvar(){
+  var d=JSON.stringify(st);
+  try{localStorage.setItem(KEY,d);}catch(e){}
+  try{
+    var exp=new Date();exp.setFullYear(exp.getFullYear()+1);
+    document.cookie=KEY+'='+encodeURIComponent(d)+';expires='+exp.toUTCString()+';path=/;SameSite=None;Secure';
+  }catch(e){}
+}
+
+/* lê localStorage primeiro, depois cookie */
+function carregar(){
+  var d=null;
+  try{d=localStorage.getItem(KEY);}catch(e){}
+  if(!d){
+    try{
+      var ca=document.cookie.split(';');
+      for(var j=0;j<ca.length;j++){
+        var c=ca[j].trim();
+        if(c.indexOf(KEY+'=')===0){d=decodeURIComponent(c.slice((KEY+'=').length));break;}
+      }
+    }catch(e){}
+  }
+  if(d){try{var p=JSON.parse(d);Object.keys(p).forEach(function(k){st[k]=p[k];});}catch(e){}}
+}
+
+/* aplica visual do estado carregado */
+function aplicar(){
+  Object.keys(st).forEach(function(k){
+    if(st[k]){
+      var b=document.getElementById('c'+k);
+      var l=document.getElementById('l'+k);
+      var r=document.getElementById('r'+k);
+      if(b)b.classList.add('on');
+      if(l){l.classList.add('on');l.textContent='Comprado \u2713';}
+      if(r)r.classList.add('bought');
+    }
+  });
+  upd();
+}
+
+function tog(i,v){
+  if(v)vl[i]=v;
+  st[i]=!st[i];
+  var b=document.getElementById('c'+i);
+  var l=document.getElementById('l'+i);
+  var r=document.getElementById('r'+i);
+  if(st[i]){b.classList.add('on');l.classList.add('on');l.textContent='Comprado \u2713';r.classList.add('bought');}
+  else{b.classList.remove('on');l.classList.remove('on');l.textContent='Pendente';r.classList.remove('bought');}
+  salvar();
+  upd();
+}
+
+function fmt(v){return 'R$ '+v.toFixed(2).replace('.',',');}
+
+function upd(){
+  var c=0,n=0;
+  Object.keys(st).forEach(function(k){if(st[k]){c+=vl[k];n++;}});
+  document.getElementById('s-comprado').textContent=fmt(c);
+  document.getElementById('s-n').textContent=n+' itens';
+}
+
+function showTab(id){
+  document.querySelectorAll('.main-tab').forEach(function(t){t.classList.remove('on');});
+  document.getElementById('tab-compras').style.display='none';
+  document.getElementById('tab-iluminacao').style.display='none';
+  document.getElementById('tab-'+id).style.display='block';
+  event.target.classList.add('on');
+}
+
+/* inicia */
+carregar();
+aplicar();
+</script>
+</body>
+</html>
