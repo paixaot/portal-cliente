@@ -115,6 +115,7 @@ tbody td:first-child{font-weight:500;font-size:12px;}
 <!-- ABAS PRINCIPAIS -->
 <div class="main-tabs">
   <button class="main-tab on" onclick="showTab('compras')">Compras</button>
+  <button class="main-tab" onclick="showTab('revestimentos')">Revestimentos</button>
   <button class="main-tab" onclick="showTab('iluminacao')">Iluminação</button>
 </div>
 
@@ -355,6 +356,435 @@ tbody td:first-child{font-weight:500;font-size:12px;}
 </div>
 
 <!-- ════════════════════════════════════════════════════════════ -->
+<!--  ABA REVESTIMENTOS                                         -->
+<!-- ════════════════════════════════════════════════════════════ -->
+<div id="tab-revestimentos" style="display:none">
+
+  <!-- RESUMO REVESTIMENTOS -->
+  <div class="summary">
+    <div class="sum-item"><div class="sum-lbl">Total de ambientes</div><div class="sum-val">9 ambientes</div></div>
+    <div class="sum-item"><div class="sum-lbl">Área total</div><div class="sum-val">360,08 m²</div></div>
+    <div class="sum-item"><div class="sum-lbl">Fornecedor</div><div class="sum-val" style="font-size:13px;font-weight:400;">Condec Tintas</div></div>
+    <div class="sum-item"><div class="sum-lbl">Orçamentos</div><div class="sum-val ok" id="rv-ok">0 aprovados</div></div>
+  </div>
+
+  <!-- BLOCO FACHADA -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag" style="background:#7a8a9a;color:#fff;">Fachada</span>
+      <span class="amb-name">Fachada Externa</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>Ambiente</th>
+            <th>Produto / Referência</th>
+            <th>Marca</th>
+            <th>Cor</th>
+            <th>Área</th>
+            <th>Rendimento est.</th>
+            <th>Fornecedor</th>
+            <th>Compra</th>
+            <th class="tc">Comprado?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="rv0">
+            <td>Fachada</td>
+            <td>
+              <div style="font-size:12px;font-weight:600;color:#18140f;">Textura Granos Médio</div>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Acabamento texturizado externo</div>
+            </td>
+            <td>
+              <span style="font-size:11px;font-weight:600;color:#18140f;">Coral</span>
+            </td>
+            <td>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:18px;height:18px;border-radius:4px;background:#00354d;border:1px solid #ede8e0;flex-shrink:0;"></div>
+                <span style="font-size:11px;font-weight:400;color:#18140f;">Azul Prússia</span>
+              </div>
+            </td>
+            <td>
+              <span style="font-size:13px;font-weight:600;color:#18140f;">12,47 m²</span>
+            </td>
+            <td>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;">
+                ~4–6 m²/L<br>
+                <span style="color:#b8935a;font-weight:500;">≈ 3–4 L necessários</span>
+              </div>
+            </td>
+            <td class="forn">Condec Tintas<br><span style="font-size:9px;color:#c4bdb4;">Solicitar orçamento</span></td>
+            <td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell">
+              <div class="check-wrap">
+                <button class="chk" id="rvc0" onclick="togRv(0)">
+                  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+                </button>
+                <span class="slbl" id="rvl0">Pendente</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="tot-row">
+            <td colspan="4"><strong>Subtotal — Fachada</strong></td>
+            <td colspan="5"><strong>12,47 m²</strong> &middot; Solicitar orçamento na Condec Tintas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO RECEPÇÃO -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-recepcao">Recepção</span>
+      <span class="amb-name">Área de Espera</span>
+      <span class="amb-count">2 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv1">
+            <td>Parede destaque<br><span style="font-size:9px;font-weight:300;color:#7a7268;">9,19 × 2,77 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Textura Granos Médio</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#c8956c;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">A definir</span></div></td>
+            <td><strong>25,46 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~4–6 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 5–7 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc1" onclick="togRv(1)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl1">Pendente</span></div></td>
+          </tr>
+          <tr id="rv2">
+            <td>Demais paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(9,19+5,36) × 2,77 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>40,30 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 4–5 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc2" onclick="togRv(2)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl2">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Recepção</strong></td><td colspan="5"><strong>65,76 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO SALA 02 -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-sala2">Sala 02</span>
+      <span class="amb-name">Sala Assentamentos</span>
+      <span class="amb-count">2 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv3">
+            <td>Parede destaque<br><span style="font-size:9px;font-weight:300;color:#7a7268;">3,97 × 2,64 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Textura Granos Médio</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#c8956c;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Caramelo Suave</span></div></td>
+            <td><strong>10,48 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~4–6 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 2–3 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc3" onclick="togRv(3)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl3">Pendente</span></div></td>
+          </tr>
+          <tr id="rv4">
+            <td>Demais paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(2,91+2,91+3,97) × 2,64 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>25,85 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 3 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc4" onclick="togRv(4)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl4">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Sala 02</strong></td><td colspan="5"><strong>36,33 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO SALA 01 -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-sala1">Sala 01</span>
+      <span class="amb-name">Sala Fulgêncio</span>
+      <span class="amb-count">2 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv5">
+            <td>Parede destaque<br><span style="font-size:9px;font-weight:300;color:#7a7268;">2,90 × 2,78 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Textura Granos Médio</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#c8956c;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">A definir</span></div></td>
+            <td><strong>8,06 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~4–6 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 2 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc5" onclick="togRv(5)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl5">Pendente</span></div></td>
+          </tr>
+          <tr id="rv6">
+            <td>Demais paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(3,82+3,82+2,90) × 2,78 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>29,30 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 3 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc6" onclick="togRv(6)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl6">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Sala 01</strong></td><td colspan="5"><strong>37,36 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO HALL -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-geral">Hall</span>
+      <span class="amb-name">Hall de Entrada</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv7">
+            <td>Paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(3,03+3,03+1,05) × 2,77 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>19,69 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 2 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc7" onclick="togRv(7)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl7">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Hall</strong></td><td colspan="5"><strong>19,69 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO CIRCULAÇÃO -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-geral">Circulação</span>
+      <span class="amb-name">Corredor / Circulação</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv8">
+            <td>Paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(1,73+5,00+3,11+8,35+8,35) × 2,48 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>65,82 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 6–7 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc8" onclick="togRv(8)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl8">Pendente</span></div></td>
+          </tr>
+          <tr id="rv12">
+            <td>Parede destaque<br><span style="font-size:9px;font-weight:300;color:#7a7268;">1,87 × 2,49 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Azul Prússia</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#00354d;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Azul Prússia</span></div></td>
+            <td><strong>4,66 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 1 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc12" onclick="togRv(12)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl12">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Circulação</strong></td><td colspan="5"><strong>70,48 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO COPA -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-cozinha">Copa</span>
+      <span class="amb-name">Copa / Cozinha</span>
+      <span class="amb-count">2 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv9">
+            <td>Parede destaque<br><span style="font-size:9px;font-weight:300;color:#7a7268;">2,19 × 2,47 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Azul Prússia</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#00354d;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Azul Prússia</span></div></td>
+            <td><strong>5,41 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 1 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc9" onclick="togRv(9)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl9">Pendente</span></div></td>
+          </tr>
+          <tr id="rv10">
+            <td>Demais paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">3,11 × 2,47 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>7,68 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 1 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc10" onclick="togRv(10)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl10">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Copa</strong></td><td colspan="5"><strong>13,09 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO SALA 03 -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-sala3">Sala 03</span>
+      <span class="amb-name">Sala Cerqueiro</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv11">
+            <td>Todas as paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(3,10+3,10+2,98+2,98) × 2,49 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Textura Cimento Queimado</div><div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Chromium</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#6e6e6e;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Chromium</span></div></td>
+            <td><strong>30,28 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~3–5 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 7–10 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc11" onclick="togRv(11)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl11">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Sala 03</strong></td><td colspan="5"><strong>30,28 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO DESCANSO -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag tag-geral">Descanso</span>
+      <span class="amb-name">Sala de Descanso</span>
+      <span class="amb-count">1 item</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Marca</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+          <tr id="rv13">
+            <td>Paredes<br><span style="font-size:9px;font-weight:300;color:#7a7268;">(6,28+2,91+2,91) × 2,70 m</span></td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta Renda Primorosa</div></td>
+            <td><span style="font-size:11px;font-weight:600;">Coral</span></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#d6c8b7;border:1px solid #c4bdb4;flex-shrink:0;"></div><span style="font-size:11px;">Renda Primorosa</span></div></td>
+            <td><strong>32,67 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~10–12 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 3 L</span></div></td>
+            <td class="forn">Condec Tintas</td><td><span class="badge b-loja">Loja</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc13" onclick="togRv(13)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl13">Pendente</span></div></td>
+          </tr>
+          <tr class="tot-row"><td colspan="4"><strong>Subtotal — Descanso</strong></td><td colspan="5"><strong>32,67 m²</strong> · Solicitar orçamento na Condec Tintas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BLOCO PISO ÉPOX -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag" style="background:#5a5a5a;color:#fff;">Piso</span>
+      <span class="amb-name">Tinta de Piso Épox · Cinza</span>
+      <span class="amb-count">3 ambientes · 41,95 m²</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>Ambiente</th><th>Produto</th><th>Cor</th><th>Área</th><th>Rendimento est.</th><th>Obs.</th><th>Fornecedor</th><th>Compra</th><th class="tc">Comprado?</th></tr></thead>
+        <tbody>
+
+          <tr id="rv14">
+            <td>Circulação</td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta de Piso Épox</div><div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Avaliar custo-benefício</div></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#888888;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Cinza</span></div></td>
+            <td><strong>21,16 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~25–30 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 1 L</span></div></td>
+            <td><span class="badge b-pesquisar" style="font-size:8px;">Avaliar</span></td>
+            <td class="forn">Pesquisar</td>
+            <td><span class="badge b-pesquisar">Pesquisar</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc14" onclick="togRv(14)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl14">Pendente</span></div></td>
+          </tr>
+
+          <tr id="rv15">
+            <td>Sala 02</td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta de Piso Épox</div><div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Avaliar custo-benefício</div></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#888888;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Cinza</span></div></td>
+            <td><strong>11,55 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~25–30 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 1 L</span></div></td>
+            <td><span class="badge b-pesquisar" style="font-size:8px;">Avaliar</span></td>
+            <td class="forn">Pesquisar</td>
+            <td><span class="badge b-pesquisar">Pesquisar</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc15" onclick="togRv(15)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl15">Pendente</span></div></td>
+          </tr>
+
+          <tr id="rv16">
+            <td>Sala 03</td>
+            <td><div style="font-size:12px;font-weight:600;color:#18140f;">Tinta de Piso Épox</div><div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Avaliar custo-benefício</div></td>
+            <td><div style="display:flex;align-items:center;gap:7px;"><div style="width:18px;height:18px;border-radius:4px;background:#888888;border:1px solid #ede8e0;flex-shrink:0;"></div><span style="font-size:11px;">Cinza</span></div></td>
+            <td><strong>9,24 m²</strong></td>
+            <td><div style="font-size:10px;color:#7a7268;">~25–30 m²/L<br><span style="color:#b8935a;font-weight:500;">≈ 1 L</span></div></td>
+            <td><span class="badge b-pesquisar" style="font-size:8px;">Avaliar</span></td>
+            <td class="forn">Pesquisar</td>
+            <td><span class="badge b-pesquisar">Pesquisar</span></td>
+            <td class="check-cell"><div class="check-wrap"><button class="chk" id="rvc16" onclick="togRv(16)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button><span class="slbl" id="rvl16">Pendente</span></div></td>
+          </tr>
+
+          <tr class="tot-row">
+            <td colspan="3"><strong>Subtotal — Épox Piso</strong></td>
+            <td><strong>41,95 m²</strong></td>
+            <td colspan="5">Pesquisar custo-benefício · ~2–3 L estimados</td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="nota">
+    &#9432;&nbsp; Todos os rendimentos são estimativas. Leve as medidas abaixo à <strong>Condec Tintas</strong> para orçamento preciso:<br>
+    <span style="display:inline-block;margin-top:6px;line-height:2;">
+      Fachada: <strong>12,47 m²</strong> &nbsp;·&nbsp;
+      Recepção: <strong>65,76 m²</strong> &nbsp;·&nbsp;
+      Sala 02: <strong>36,33 m²</strong> &nbsp;·&nbsp;
+      Sala 01: <strong>37,36 m²</strong> &nbsp;·&nbsp;
+      Hall: <strong>19,69 m²</strong> &nbsp;·&nbsp;
+      Circulação: <strong>70,48 m²</strong> &nbsp;·&nbsp;
+      Copa: <strong>13,09 m²</strong> &nbsp;·&nbsp;
+      Sala 03: <strong>30,28 m²</strong> &nbsp;·&nbsp;
+      Descanso: <strong>32,67 m²</strong>
+    </span><br>
+    <span style="display:inline-block;margin-top:6px;line-height:2;">
+      <strong>Piso Épox Cinza:</strong> Circulação <strong>21,16 m²</strong> · Sala 02 <strong>11,55 m²</strong> · Sala 03 <strong>9,24 m²</strong> = <strong>41,95 m²</strong> total
+    </span><br>
+    <span style="display:inline-block;margin-top:8px;font-size:10px;color:#b8935a;">
+      🎨 Renda Primorosa Coral · Código 20YY 60/104 · #d6c8b7
+    </span>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════════════ -->
 <!--  ABA ILUMINAÇÃO                                            -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <div id="tab-iluminacao" style="display:none">
@@ -439,9 +869,22 @@ function upd(){
 function showTab(id){
   document.querySelectorAll('.main-tab').forEach(function(t){t.classList.remove('on');});
   document.getElementById('tab-compras').style.display='none';
+  document.getElementById('tab-revestimentos').style.display='none';
   document.getElementById('tab-iluminacao').style.display='none';
   document.getElementById('tab-'+id).style.display='block';
   event.target.classList.add('on');
+}
+
+var stRv={0:false,1:false,2:false,3:false,4:false,5:false,6:false,7:false,8:false,9:false,10:false,11:false,12:false,13:false,14:false,15:false,16:false};
+function togRv(i){
+  stRv[i]=!stRv[i];
+  var b=document.getElementById('rvc'+i);
+  var l=document.getElementById('rvl'+i);
+  var r=document.getElementById('rv'+i);
+  if(stRv[i]){b.classList.add('on');l.classList.add('on');l.textContent='Comprado \u2713';r.classList.add('bought');}
+  else{b.classList.remove('on');l.classList.remove('on');l.textContent='Pendente';r.classList.remove('bought');}
+  var n=Object.keys(stRv).filter(function(k){return stRv[k];}).length;
+  document.getElementById('rv-ok').textContent=n+' aprovado'+(n!==1?'s':'');
 }
 
 /* inicia */
