@@ -788,10 +788,160 @@ tbody td:first-child{font-weight:500;font-size:12px;}
 <!--  ABA ILUMINAÇÃO                                            -->
 <!-- ════════════════════════════════════════════════════════════ -->
 <div id="tab-iluminacao" style="display:none">
-  <div class="ilum-note">
-    <div class="ilum-icon">💡</div>
-    <div class="ilum-txt">Os itens de iluminação serão adicionados em breve.<br>Entre em contato com a arquiteta para mais informações.</div>
+
+  <!-- RESUMO -->
+  <div class="summary">
+    <div class="sum-item"><div class="sum-lbl">Total de itens</div><div class="sum-val">4 itens</div></div>
+    <div class="sum-item"><div class="sum-lbl">Peças de luz</div><div class="sum-val">24 peças</div></div>
+    <div class="sum-item"><div class="sum-lbl">Valor total</div><div class="sum-val">R$ 2.139,33</div></div>
+    <div class="sum-item"><div class="sum-lbl">Já comprado</div><div class="sum-val ok" id="il-comprado">R$ 0,00</div></div>
   </div>
+
+  <!-- TABELA -->
+  <div class="amb-block">
+    <div class="amb-header">
+      <span class="amb-tag" style="background:#6a7a4a;color:#fff;">💡 Iluminação</span>
+      <span class="amb-name">Luminotécnica — Mercado Livre</span>
+      <span class="amb-count">4 itens</span>
+    </div>
+    <div class="tw">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Ambientes</th>
+            <th>Qtd</th>
+            <th>Valor unit.</th>
+            <th>Total</th>
+            <th>Link</th>
+            <th>Compra</th>
+            <th class="tc">Comprado?</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <!-- PAINEL KIT 3 -->
+          <tr id="il0">
+            <td>
+              <div style="font-size:12px;font-weight:600;color:#18140f;">Painel Redondo Preto 30cm · 3000K</div>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Kit com 3 unidades · Acabamento preto</div>
+            </td>
+            <td>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;line-height:1.7;">
+                <span style="background:rgba(184,147,90,.12);color:#9a7235;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Área Kids</span> 2 painéis<br>
+                <span style="background:rgba(160,184,138,.15);color:#4a7a30;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 01</span> 1 painel
+              </div>
+            </td>
+            <td style="font-weight:500;">1 kit</td>
+            <td class="val">R$ 118,73</td>
+            <td class="val">R$ 118,73</td>
+            <td><a class="item-link" href="https://meli.la/2w6STj6" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td>
+            <td><span class="badge b-online">Online</span></td>
+            <td class="check-cell">
+              <div class="check-wrap">
+                <button class="chk" id="ilc0" onclick="togIl(0, 118.73)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button>
+                <span class="slbl" id="ill0">Pendente</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PAINEL KIT 2 -->
+          <tr id="il1">
+            <td>
+              <div style="font-size:12px;font-weight:600;color:#18140f;">Painel Redondo Preto 30cm · 3000K</div>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Kit com 2 unidades · Acabamento preto</div>
+            </td>
+            <td>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;line-height:1.7;">
+                <span style="background:rgba(184,147,90,.12);color:#9a7235;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Copa</span> 1 painel<br>
+                <span style="background:rgba(184,160,138,.15);color:#7a5a30;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 02</span> 1 painel
+              </div>
+            </td>
+            <td style="font-weight:500;">1 kit</td>
+            <td class="val">R$ 60,40</td>
+            <td class="val">R$ 60,40</td>
+            <td><a class="item-link" href="https://meli.la/19xUQPp" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td>
+            <td><span class="badge b-online">Online</span></td>
+            <td class="check-cell">
+              <div class="check-wrap">
+                <button class="chk" id="ilc1" onclick="togIl(1, 60.40)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button>
+                <span class="slbl" id="ill1">Pendente</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PENDENTE LINEAR -->
+          <tr id="il2">
+            <td>
+              <div style="font-size:12px;font-weight:600;color:#18140f;">Pendente Linear · 4000K Branco Neutro</div>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">Selecionar opção: Branco Neutro 4000K</div>
+            </td>
+            <td>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;line-height:1.7;">
+                <span style="background:rgba(160,184,138,.15);color:#4a7a30;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 01</span>
+                <span style="background:rgba(184,160,138,.15);color:#7a5a30;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 02</span>
+                <span style="background:rgba(168,138,184,.15);color:#6a3a7a;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 03</span>
+              </div>
+            </td>
+            <td style="font-weight:500;">3 un</td>
+            <td class="val">R$ 126,00</td>
+            <td class="val">R$ 378,00</td>
+            <td><a class="item-link" href="https://meli.la/1K7YBPf" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td>
+            <td><span class="badge b-online">Online</span></td>
+            <td class="check-cell">
+              <div class="check-wrap">
+                <button class="chk" id="ilc2" onclick="togIl(2, 378)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button>
+                <span class="slbl" id="ill2">Pendente</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- PAR 20 EMBUTIR -->
+          <tr id="il3">
+            <td>
+              <div style="font-size:12px;font-weight:600;color:#18140f;">Par 20 Embutir · 3000K</div>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:2px;">18 unidades no total · Por ambiente:</div>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;margin-top:3px;line-height:1.5;">
+                Recepção 5 · Sala 01 4 · Sala 02 4 · Sala 03 5
+              </div>
+            </td>
+            <td>
+              <div style="font-size:10px;font-weight:300;color:#7a7268;line-height:1.9;">
+                <span style="background:rgba(138,172,184,.15);color:#2a6a7a;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Recepção</span> 5 un<br>
+                <span style="background:rgba(160,184,138,.15);color:#4a7a30;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 01</span> 4 un<br>
+                <span style="background:rgba(184,160,138,.15);color:#7a5a30;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 02</span> 4 un<br>
+                <span style="background:rgba(168,138,184,.15);color:#6a3a7a;padding:2px 7px;border-radius:10px;font-size:9px;font-weight:600;">Sala 03</span> 5 un
+              </div>
+            </td>
+            <td style="font-weight:500;">18 un</td>
+            <td class="val">R$ 87,90</td>
+            <td class="val">R$ 1.582,20</td>
+            <td><a class="item-link" href="https://meli.la/1BbxEXm" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>Ver</a></td>
+            <td><span class="badge b-online">Online</span></td>
+            <td class="check-cell">
+              <div class="check-wrap">
+                <button class="chk" id="ilc3" onclick="togIl(3, 1582.20)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></button>
+                <span class="slbl" id="ill3">Pendente</span>
+              </div>
+            </td>
+          </tr>
+
+          <!-- TOTAL -->
+          <tr class="tot-row">
+            <td colspan="4"><strong>Total Iluminação</strong></td>
+            <td><strong>R$ 2.139,33</strong></td>
+            <td colspan="3"><div class="tot-sub" id="il-tot-sub"></div></td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="nota">
+    &#9432;&nbsp; Pendente linear: selecionar a opção <strong>Branco Neutro 4000K</strong> ao adicionar ao carrinho. &nbsp;·&nbsp; Par 20 embutir: pedir em quantidade de <strong>18 unidades</strong> (pode parcelar por ambiente na instalação).
+  </div>
+
 </div>
 
 <script>
@@ -806,7 +956,7 @@ var KEY='smv_compras_v1';
 
 /* salva em localStorage E cookie (fallback para iframe) */
 function salvar(){
-  var d=JSON.stringify(st);
+  var d=JSON.stringify({st:st,stRv:stRv,stIl:stIl});
   try{localStorage.setItem(KEY,d);}catch(e){}
   try{
     var exp=new Date();exp.setFullYear(exp.getFullYear()+1);
@@ -827,7 +977,14 @@ function carregar(){
       }
     }catch(e){}
   }
-  if(d){try{var p=JSON.parse(d);Object.keys(p).forEach(function(k){st[k]=p[k];});}catch(e){}}
+  if(d){try{
+    var p=JSON.parse(d);
+    if(p.st)  Object.keys(p.st).forEach(function(k){st[k]=p.st[k];});
+    if(p.stRv)Object.keys(p.stRv).forEach(function(k){stRv[k]=p.stRv[k];});
+    if(p.stIl)Object.keys(p.stIl).forEach(function(k){stIl[k]=p.stIl[k];});
+    /* compatibilidade com versão antiga (objeto flat) */
+    if(!p.st && !p.stRv && !p.stIl) Object.keys(p).forEach(function(k){st[k]=p[k];});
+  }catch(e){}}
 }
 
 /* aplica visual do estado carregado */
@@ -842,7 +999,29 @@ function aplicar(){
       if(r)r.classList.add('bought');
     }
   });
+  Object.keys(stRv).forEach(function(k){
+    if(stRv[k]){
+      var b=document.getElementById('rvc'+k);
+      var l=document.getElementById('rvl'+k);
+      var r=document.getElementById('rv'+k);
+      if(b)b.classList.add('on');
+      if(l){l.classList.add('on');l.textContent='Comprado \u2713';}
+      if(r)r.classList.add('bought');
+    }
+  });
+  Object.keys(stIl).forEach(function(k){
+    if(stIl[k]){
+      var b=document.getElementById('ilc'+k);
+      var l=document.getElementById('ill'+k);
+      var r=document.getElementById('il'+k);
+      if(b)b.classList.add('on');
+      if(l){l.classList.add('on');l.textContent='Comprado \u2713';}
+      if(r)r.classList.add('bought');
+    }
+  });
   upd();
+  updRv();
+  updIl();
 }
 
 function tog(i,v){
@@ -875,7 +1054,38 @@ function showTab(id){
   event.target.classList.add('on');
 }
 
+/* ── ILUMINAÇÃO ── */
+var stIl={0:false,1:false,2:false,3:false};
+var vlIl={0:118.73,1:60.40,2:378,3:1582.20};
+
+function togIl(i,v){
+  stIl[i]=!stIl[i];
+  var b=document.getElementById('ilc'+i);
+  var l=document.getElementById('ill'+i);
+  var r=document.getElementById('il'+i);
+  if(stIl[i]){b.classList.add('on');l.classList.add('on');l.textContent='Comprado \u2713';r.classList.add('bought');}
+  else{b.classList.remove('on');l.classList.remove('on');l.textContent='Pendente';r.classList.remove('bought');}
+  updIl();
+  salvar();
+}
+
+function updIl(){
+  var c=0,n=0;
+  Object.keys(stIl).forEach(function(k){if(stIl[k]){c+=vlIl[k];n++;}});
+  var el=document.getElementById('il-comprado');
+  if(el) el.textContent=fmt(c);
+  var sub=document.getElementById('il-tot-sub');
+  if(sub) sub.textContent=c>0?fmt(c)+' j\u00e1 comprado':'';
+}
+
 var stRv={0:false,1:false,2:false,3:false,4:false,5:false,6:false,7:false,8:false,9:false,10:false,11:false,12:false,13:false,14:false,15:false,16:false};
+
+function updRv(){
+  var n=Object.keys(stRv).filter(function(k){return stRv[k];}).length;
+  var el=document.getElementById('rv-ok');
+  if(el) el.textContent=n+' aprovado'+(n!==1?'s':'');
+}
+
 function togRv(i){
   stRv[i]=!stRv[i];
   var b=document.getElementById('rvc'+i);
@@ -883,8 +1093,8 @@ function togRv(i){
   var r=document.getElementById('rv'+i);
   if(stRv[i]){b.classList.add('on');l.classList.add('on');l.textContent='Comprado \u2713';r.classList.add('bought');}
   else{b.classList.remove('on');l.classList.remove('on');l.textContent='Pendente';r.classList.remove('bought');}
-  var n=Object.keys(stRv).filter(function(k){return stRv[k];}).length;
-  document.getElementById('rv-ok').textContent=n+' aprovado'+(n!==1?'s':'');
+  updRv();
+  salvar();
 }
 
 /* inicia */
